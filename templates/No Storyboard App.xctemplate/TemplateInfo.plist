@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Kind</key>
+	<string>Xcode.Xcode3.ProjectTemplateUnitKind</string>
+	<key>Identifier</key>
+	<string>com.dvdblk.dt.unit.noStoryboardApplication</string>
+	<key>Ancestors</key>
+	<array>
+		<string>com.apple.dt.unit.coreDataCocoaTouchApplication</string>
+	</array>
+	<key>Concrete</key>
+	<true/>
+	<key>Description</key>
+	<string>This template provides a starting point for an application that uses a single view. It provides a view controller to manage the view.</string>
+	<key>SortOrder</key>
+	<integer>1</integer>
+	<key>Options</key>
+	<array>
+		<dict>
+			<key>Identifier</key>
+			<string>rootClassName</string>
+			<key>Required</key>
+			<true/>
+			<key>Name</key>
+			<string>Root View Controller Class:</string>
+			<key>Description</key>
+			<string>Class to use for the root view controller</string>
+			<key>Type</key>
+			<string>text</string>
+			<key>Default</key>
+			<string>RootViewController</string>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>languageChoice</string>
+			<key>Units</key>
+			<dict>
+				<key>Objective-C</key>
+				<dict>
+					<key>Nodes</key>
+					<array>
+						<string>AppDelegate.m:imports:importHeader: ___VARIABLE_rootClassName___.h</string>
+						<string>___VARIABLE_rootClassName___.h:comments</string>
+						<string>___VARIABLE_rootClassName___.h:imports:importCocoa</string>
+						<string>___VARIABLE_rootClassName___.h:interface(___FILEBASENAME___ : UIViewController)</string>
+						<string>___VARIABLE_rootClassName___.m:comments</string>
+						<string>___VARIABLE_rootClassName___.m:imports:importHeader:ViewController.h</string>
+						<string>___VARIABLE_rootClassName___.m:extension</string>
+						<string>___VARIABLE_rootClassName___.m:implementation:methods:viewDidLoad(- (void\)viewDidLoad)</string>
+						<string>___VARIABLE_rootClassName___.m:implementation:methods:viewDidLoad:super</string>
+					</array>
+				</dict>
+				<key>Swift</key>
+				<dict>
+					<key>Nodes</key>
+					<array>
+						<string>___VARIABLE_rootClassName___.swift:comments</string>
+						<string>___VARIABLE_rootClassName___.swift:imports:importCocoa</string>
+						<string>___VARIABLE_rootClassName___.swift:implementation(___FILEBASENAME___: UIViewController)</string>
+						<string>___VARIABLE_rootClassName___.swift:implementation:methods:viewDidLoad(override func viewDidLoad(\))</string>
+						<string>___VARIABLE_rootClassName___.swift:implementation:methods:viewDidLoad:super</string>
+					</array>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>coordinator</string>
+			<key>Name</key>
+			<string>Use coordinators</string>
+			<key>Description</key>
+			<string>Shall the application use coordinators for navigation?</string>
+			<key>Type</key>
+			<string>checkbox</string>
+			<key>Default</key>
+			<string>true</string>
+			<key>Units</key>
+			<dict>
+				<key>false</key>
+				<array>
+					<dict>
+						<key>RequiredOptions</key>
+						<dict>
+							<key>languageChoice</key>
+							<string>Swift</string>
+						</dict>
+						<key>Definitions</key>
+						<dict>
+							<key>AppDelegate.swift:implementation:methods:applicationdidFinishLaunchingWithOptions:body</key>
+							<string>let applicationWindow = UIWindow(frame: UIScreen.main.bounds)
+applicationWindow.makeKeyAndVisible()
+applicationWindow.rootViewController = ___VARIABLE_rootClassName___()
+window = applicationWindow</string>
+						</dict>
+					</dict>
+				</array>
+				<key>true</key>
+				<array>
+					<dict>
+						<key>RequiredOptions</key>
+						<dict>
+							<key>languageChoice</key>
+							<string>Swift</string>
+						</dict>
+						<key>Nodes</key>
+						<array>
+							<string>Coordinator.swift</string>
+							<string>___VARIABLE_coordinatorClassName___.swift</string>
+						</array>
+						<key>Definitions</key>
+						<dict>
+							<key>Coordinator.swift</key>
+							<dict>
+								<key>Path</key>
+								<string>Coordinator/Coordinator.swift</string>
+							</dict>
+							<key>___VARIABLE_coordinatorClassName___.swift</key>
+							<dict>
+								<key>Path</key>
+								<string>Coordinator/___VARIABLE_coordinatorClassName___.swift</string>
+							</dict>
+						</dict>
+					</dict>
+					<dict>
+						<key>RequiredOptions</key>
+						<dict>
+							<key>languageChoice</key>
+							<string>Swift</string>
+						</dict>
+						<key>Nodes</key>
+						<array>
+							<string>AppDelegate.swift:implementation:coordinatorProperty</string>
+						</array>
+						<key>Definitions</key>
+						<dict>
+							<key>AppDelegate.swift:implementation:methods:applicationdidFinishLaunchingWithOptions:body</key>
+							<string>let rootViewController = ___VARIABLE_rootClassName___()
+let mainCoordinator = ___VARIABLE_coordinatorClassName___(with: rootViewController)
+mainCoordinator.start()
+let coordinator = mainCoordinator
+
+let applicationWindow = UIWindow(frame: UIScreen.main.bounds)
+applicationWindow.makeKeyAndVisible()
+applicationWindow.rootViewController = rootViewController
+window = applicationWindow</string>
+							<key>AppDelegate.swift:implementation:coordinatorProperty</key>
+							<string>// MARK: - Coordinator
+        
+var coordinator: MainCoordinator?</string>
+						</dict>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Identifier</key>
+			<string>coordinatorClassName</string>
+			<key>Required</key>
+			<false/>
+			<key>Name</key>
+			<string>Coordinator Class:</string>
+			<key>Description</key>
+			<string>Class to use for the root coordinator</string>
+			<key>Type</key>
+			<string>text</string>
+			<key>Default</key>
+			<string>MainCoordinator</string>
+			<key>RequiredOptions</key>
+			<dict>
+				<key>coordinator</key>
+				<string>true</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
